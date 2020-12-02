@@ -7,6 +7,7 @@ import urllib.request
 from datetime import datetime 
 from datetime import timedelta
 import time 
+import os 
 # Read Election Turnout File with Pandas
 df = pd.read_csv('2020 November General Election - Turnout Rates.csv')
 # Title the page 
@@ -26,13 +27,7 @@ if state == 'United States':
 # If a state is selected show that state 
 else: 
     df.loc[df['State']==state]
-# Convert String to Float in dataframe 
-df.apply(pd.to_numeric, errors='ignore')
-# Show state abv 
-g = sns.barplot(x='State',y=[
-       'Total Ballots Counted (Estimate)',
-       'Vote for Highest Office (President)', 'VEP Turnout Rate',
-       'Voting-Eligible Population (VEP)', 'Voting-Age Population (VAP)',
-       '% Non-citizen', 'Prison', 'Probation', 'Parole',
-       'Total Ineligible Felon', 'Overseas Eligible'],data=df.dropna())
-st.pyplot(g)
+st.write('Choose a dataset')
+dataset = st.selectbox('Dataset', os.listdir('Datasets'))
+df2 = pd.read_csv('Datasets/'+dataset)
+st.dataframe(df2)
