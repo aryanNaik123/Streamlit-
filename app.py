@@ -31,3 +31,5 @@ st.write('Choose a dataset')
 dataset = st.selectbox('Dataset', os.listdir('Datasets'))
 df2 = pd.read_csv('Datasets/'+dataset)
 st.dataframe(df2)
+if dataset == 'governors_county.csv':
+    st.write(df2[['percent']].count().iloc[0],' Counties had 100 percent voter turnout')
