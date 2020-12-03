@@ -2,4 +2,5 @@
 [![Heroku App](https://www.herokucdn.com/deploy/button.svg)](https://voting-data.herokuapp.com/)
 
 Heroku Web app created using Streamlit Python Library
-Exploratory Data Analysis of Election Turnout in the 2020 General Election 
+Exploratory Data Analysis of US 2020 General Election 
+Click the Deploy to Heroku button to open 
