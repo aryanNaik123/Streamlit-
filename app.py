@@ -39,6 +39,7 @@ if dataset == 'governors_county.csv':
     st.write(perdf2,' Counties have had 100 percent of votes counted')
 #    st.write(df2['county'].count())
 #    pivot_df2 = pd.pivot_table(df2, index=['county'],values=['total_votes'],aggfunc='sum')
+    sns.set_style("whitegrid")
     f = df2.plot()
     st.pyplot(f.figure) 
 
