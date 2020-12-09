@@ -39,9 +39,7 @@ if dataset == 'governors_county.csv':
     st.write(perdf2,' Counties have had 100 percent of votes counted')
 #    st.write(df2['county'].count())
 #    pivot_df2 = pd.pivot_table(df2, index=['county'],values=['total_votes'],aggfunc='sum')
-
-    g = sns.barplot(x='county',y='current_votes',data=df2)
-    g.set_xticklabels(g.get_xticklabels(),rotation=30)
-    st.pyplot(g.figure)
+    f = df2.plot()
+    st.pyplot(f.figure) 
 
 #elif dataset =
