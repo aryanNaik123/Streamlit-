@@ -42,8 +42,5 @@ if dataset == 'governors_county.csv':
 
     g = sns.barplot(x='county',y='current_votes',data=df2)
     st.pyplot(g)
-'''
-elif dataset =
-elif dataset = 
-elif dataset = 
-'''
+
+#elif dataset =
