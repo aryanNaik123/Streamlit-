@@ -40,7 +40,11 @@ if dataset == 'governors_county.csv':
 #    st.write(df2['county'].count())
 #    pivot_df2 = pd.pivot_table(df2, index=['county'],values=['total_votes'],aggfunc='sum')
     sns.set_style("whitegrid")
+    st.dataframe(df2.describe())
     f = df2.plot()
     st.pyplot(f.figure) 
-
+elif dataset == 'president_county_candidate.csv':   
+    st.dataframe(df2.describe())
+    f = df2.plot()
+    st.pyplot(f.figure)
 #elif dataset =
