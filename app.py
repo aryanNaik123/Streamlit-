@@ -12,15 +12,9 @@ import os
 df = pd.read_csv('2020 November General Election - Turnout Rates.csv')
 # Title the page 
 st.title('2020 General Election Turnout')
-st.write('Select State')
+st.subheader('Select State')
 # Select State to display in dataframe
 state = st.selectbox('state',options=df.State.unique())
-start_time = st.slider(
-"When do you start?",
-min_value=datetime(1980, 1, 1),
-max_value=datetime(2020, 1, 1),
-format="MM/DD/YY")
-st.write("Start time:", start_time.strftime("%D"))
 # If US is selected show all states
 if state == 'United States': 
     st.dataframe(data=df)
@@ -43,8 +37,9 @@ if dataset == 'governors_county.csv':
     st.dataframe(df2.describe())
     f = df2.plot()
     st.pyplot(f.figure) 
+elif dataset == 'senate_state.csv': 
+    st.write('Total Votes: ',df2.total_votes.sum())
 elif dataset == 'president_county_candidate.csv':   
     st.dataframe(df2.describe())
     f = df2.plot()
     st.pyplot(f.figure)
-#elif dataset =
