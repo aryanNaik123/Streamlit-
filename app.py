@@ -38,7 +38,6 @@ if dataset == 'governors_county.csv':
     f = df2.plot()
     st.pyplot(f.figure) 
 elif dataset == 'senate_state.csv': 
-    
     f = sns.barplot(x='state',y='total_votes',data=df2)
     f.set_xticklabels(f.get_xticklabels(), rotation=40, fontsize = 5, ha="right")
     f.set_title('Number of Senate Votes per State')
@@ -48,3 +47,9 @@ elif dataset == 'president_county_candidate.csv':
     st.dataframe(df2.describe())
     f = df2.plot()
     st.pyplot(f.figure)
+elif dataset == 'governors_state.csv': 
+    f = sns.barplot(x='state',y='votes',data=df2)
+    f.set_xticklabels(f.get_xticklabels(), rotation=40, fontsize = 5, ha="right")
+    f.set_title('Number of Senate Votes per State')
+    st.pyplot(f.figure)
+    st.write('Total Votes: ',df2.votes.sum())   
