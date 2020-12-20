@@ -18,6 +18,7 @@ state = st.selectbox('state',options=df.State.unique())
 # If US is selected show all states
 if state == 'United States': 
     st.dataframe(data=df)
+    st.dataframe(data=df.describe())
 # If a state is selected show that state 
 else: 
     df.loc[df['State']==state]
@@ -28,7 +29,9 @@ dataset_string = dataset.replace("_", " ")
 st.subheader(dataset_string.replace(".csv","").title() + " Dataset")
 st.dataframe(df2)
 sns.set_style("whitegrid")
-if dataset == 'governors_county.csv':
+if dataset == "governors_county_candidate.csv": 
+    st.dataframe(data=df2.describe())
+elif dataset == 'governors_county.csv':
     perdf2 = df2[['percent']]
     perdf2 = perdf2.loc[perdf2['percent'] == 100].count().iloc[0]
     st.write(perdf2,' Counties have had 100 percent of votes counted')
