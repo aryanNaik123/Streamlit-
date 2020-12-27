@@ -51,7 +51,7 @@ elif dataset == 'governors_state.csv':
 
 elif dataset == 'house_candidate.csv': 
     st.dataframe(df2.describe()) 
-    f = sns.barplot(x='district',y='total_votes',data=df2)
+    f = df2.plot()
     st.pyplot(f.figure)
 
 elif dataset == 'house_state.csv': 
