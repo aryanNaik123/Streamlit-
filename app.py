@@ -29,30 +29,38 @@ dataset_string = dataset.replace("_", " ")
 st.subheader(dataset_string.replace(".csv","").title() + " Dataset")
 st.dataframe(df2)
 sns.set_style("whitegrid")
+# Other Datasets 
+
 if dataset == "governors_county_candidate.csv": 
     st.dataframe(data=df2.describe())
+
 elif dataset == 'governors_county.csv':
     perdf2 = df2[['percent']]
     perdf2 = perdf2.loc[perdf2['percent'] == 100].count().iloc[0]
     st.write(perdf2,' Counties have had 100 percent of votes counted')
-#    st.write(df2['county'].count())
-#    pivot_df2 = pd.pivot_table(df2, index=['county'],values=['total_votes'],aggfunc='sum')
     st.dataframe(df2.describe())
     f = df2.plot()
     st.pyplot(f.figure) 
-elif dataset == 'senate_state.csv': 
-    f = sns.barplot(x='state',y='total_votes',data=df2)
-    f.set_xticklabels(f.get_xticklabels(), rotation=40, fontsize = 5, ha="right")
-    f.set_title('Number of Senate Votes per State')
-    st.pyplot(f.figure)
-    st.write('Total Votes: ',df2.total_votes.sum())
-elif dataset == 'president_county_candidate.csv':   
-    st.dataframe(df2.describe())
-    f = df2.plot()
-    st.pyplot(f.figure)
+
 elif dataset == 'governors_state.csv': 
     f = sns.barplot(x='state',y='votes',data=df2)
     f.set_xticklabels(f.get_xticklabels(), rotation=40, fontsize = 5, ha="right")
     f.set_title('Number of Senate Votes per State')
     st.pyplot(f.figure)
     st.write('Total Votes: ',df2.votes.sum())   
+
+elif dataset == 'house_candidate.csv': 
+    st.dataframe(df2.describe()) 
+    f = sns.barplot(x='district',y='total_votes',data=df2)
+    
+elif dataset == 'president_county_candidate.csv':   
+    st.dataframe(df2.describe())
+    f = df2.plot()
+    st.pyplot(f.figure)
+
+elif dataset == 'senate_state.csv': 
+    f = sns.barplot(x='state',y='total_votes',data=df2)
+    f.set_xticklabels(f.get_xticklabels(), rotation=40, fontsize = 5, ha="right")
+    f.set_title('Number of Senate Votes per State')
+    st.pyplot(f.figure)
+    st.write('Total Votes: ',df2.total_votes.sum())
