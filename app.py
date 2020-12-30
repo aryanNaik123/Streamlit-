@@ -30,10 +30,10 @@ st.subheader(dataset_string.replace(".csv","").title() + " Dataset")
 st.dataframe(df2)
 sns.set_style("whitegrid")
 # Other Datasets 
-
+# Governor County Candidate Dataset 
 if dataset == "governors_county_candidate.csv": 
     st.dataframe(data=df2.describe())
-
+# Governor County Dataset 
 elif dataset == 'governors_county.csv':
     perdf2 = df2[['percent']]
     perdf2 = perdf2.loc[perdf2['percent'] == 100].count().iloc[0]
@@ -41,32 +41,32 @@ elif dataset == 'governors_county.csv':
     st.dataframe(df2.describe())
     f = df2.plot()
     st.pyplot(f.figure) 
-
+# Governor State Dataset 
 elif dataset == 'governors_state.csv': 
     f = sns.barplot(x='state',y='votes',data=df2)
     f.set_xticklabels(f.get_xticklabels(), rotation=40, fontsize = 5, ha="right")
     f.set_title('Number of Senate Votes per State')
     st.pyplot(f.figure)
     st.write('Total Votes: ',df2.votes.sum())   
-
+# House Candidate Datset 
 elif dataset == 'house_candidate.csv': 
     st.dataframe(df2.describe()) 
     f = df2.plot()
     st.pyplot(f.figure)
-
+# House State Dataset 
 elif dataset == 'house_state.csv': 
     st.dataframe(df2.describe())
-
+# President County Dataset 
 elif dataset == 'president_county_candidate.csv':   
     st.dataframe(df2.describe())
-    f = df2.plot()
+    f = sns.barplot(x='county', y='total_votes', hue='candidate', data=df2)
     st.pyplot(f.figure)
-
+# President County Dataset 
 elif dataset == 'president_county.csv': 
     st.dataframe(df2.describe())
-    f = df2.plot()
+    f = sns.barplot(x='county', y='total_votes', data=df2)
     st.pyplot(f.figure)
-
+# Senate State Dataset 
 elif dataset == 'senate_state.csv': 
     f = sns.barplot(x='state',y='total_votes',data=df2)
     f.set_xticklabels(f.get_xticklabels(), rotation=40, fontsize = 5, ha="right")
