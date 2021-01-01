@@ -80,7 +80,7 @@ elif dataset == 'house_state.csv':
 elif dataset == 'president_county_candidate.csv':
     st.subheader('Descriptive Statistics')   
     st.dataframe(df2.describe())
-    f = sns.barplot(x='county', y='total_votes', hue='candidate', data=df2)
+    f = sns.barplot(x='county', y='total_votes', hue='candidate', data=df2.sort_values(by='total_votes',ascending=False).head(10))
     st.pyplot(f.figure)
 
 # President County Dataset 
