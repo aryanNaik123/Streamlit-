@@ -1,4 +1,4 @@
-# 2020 Election Turn Out Analysis
+# 2020 Election Analysis
 [![Heroku App](https://www.herokucdn.com/deploy/button.svg)](https://voting-data.herokuapp.com/)
 
 Heroku Web app created using Streamlit Python Library
