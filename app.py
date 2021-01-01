@@ -7,6 +7,8 @@ import urllib.request
 import os 
 # Read Election Turnout File with Pandas
 df = pd.read_csv('2020 November General Election - Turnout Rates.csv')
+# Setting Seaborn Graph Style 
+sns.set_style("whitegrid")
 # Title the page 
 st.title('2020 General Election Turnout')
 st.subheader('Select State')
@@ -25,7 +27,6 @@ df2 = pd.read_csv('Datasets/'+dataset)
 dataset_string = dataset.replace("_", " ")
 st.subheader(dataset_string.replace(".csv","").title() + " Dataset")
 st.dataframe(df2)
-sns.set_style("whitegrid")
 # Other Datasets 
 
 # Governor County Candidate Dataset 
