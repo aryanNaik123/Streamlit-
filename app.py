@@ -17,6 +17,7 @@ state = st.selectbox('state',options=df.State.unique())
 # If US is selected show all states
 if state == 'United States': 
     st.dataframe(data=df)
+    st.subheader('Descriptive Statistics')
     st.dataframe(data=df.describe())
 # If a state is selected show that state 
 else: 
@@ -81,6 +82,7 @@ elif dataset == 'president_county_candidate.csv':
     st.subheader('Descriptive Statistics')   
     st.dataframe(df2.describe())
     f = sns.barplot(x='county', y='total_votes', hue='candidate', data=df2.sort_values(by='total_votes',ascending=False).head(10))
+    f.set_xticklabels(f.get_xticklabels(), rotation=40, fontsize = 5, ha="right")
     st.pyplot(f.figure)
 
 # President County Dataset 
