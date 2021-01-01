@@ -28,7 +28,7 @@ df2 = pd.read_csv('Datasets/'+dataset)
 # Display Dataset name correctly 
 dataset_string = dataset.replace("_", " ")
 st.subheader(dataset_string.replace(".csv","").title() + " Dataset")
-
+# Display Chosen Dataset 
 st.dataframe(df2)
 
 # Other Datasets 
@@ -62,9 +62,9 @@ elif dataset == 'governors_state.csv':
 # House Candidate Datset 
 
 elif dataset == 'house_candidate.csv': 
+    st.subheader('Descriptive Statistics')
     st.dataframe(df2.describe()) 
-    f = df2.plot()
-    st.pyplot(f.figure)
+    st.subheader('Total Votes per Party')
     st.dataframe(df2.groupby('party').aggregate(np.sum))
     f = df2.groupby('party').aggregate(np.sum).plot.bar()
     f.set_title('Total Votes per Party')
@@ -72,11 +72,13 @@ elif dataset == 'house_candidate.csv':
 # House State Dataset 
 
 elif dataset == 'house_state.csv': 
+    st.subheader('Descriptive Statistics')
     st.dataframe(df2.describe())
 
 # President County Dataset 
 
-elif dataset == 'president_county_candidate.csv':   
+elif dataset == 'president_county_candidate.csv':
+    st.subheader('Descriptive Statistics')   
     st.dataframe(df2.describe())
     f = sns.barplot(x='county', y='total_votes', hue='candidate', data=df2)
     st.pyplot(f.figure)
