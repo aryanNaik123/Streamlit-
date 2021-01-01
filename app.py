@@ -4,9 +4,6 @@ import numpy
 import matplotlib.pyplot as plt 
 import seaborn as sns 
 import urllib.request 
-from datetime import datetime 
-from datetime import timedelta
-import time 
 import os 
 # Read Election Turnout File with Pandas
 df = pd.read_csv('2020 November General Election - Turnout Rates.csv')
@@ -30,6 +27,7 @@ st.subheader(dataset_string.replace(".csv","").title() + " Dataset")
 st.dataframe(df2)
 sns.set_style("whitegrid")
 # Other Datasets 
+
 # Governor County Candidate Dataset 
 if dataset == "governors_county_candidate.csv": 
     st.dataframe(data=df2.describe())
