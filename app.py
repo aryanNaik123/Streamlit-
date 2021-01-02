@@ -91,7 +91,9 @@ if show:
     elif dataset == 'president_county.csv': 
         st.subheader('Descriptive Statistics')
         st.dataframe(df2.describe())
-        f = sns.barplot(x='county', y='total_votes', data=df2)
+        f = sns.barplot(x='county', y='total_votes', data=df2.sort_values(by='total_votes',ascending=False).head(10))
+        f.set_xticklabels(f.get_xticklabels(), rotation=40, fontsize = 10, ha="right")
+        f.set_title('Top 10 Counties by Total Votes in Presidential Election',fontsize=10)
         st.pyplot(f.figure)
 
     # President State Dataset 
