@@ -28,78 +28,80 @@ dataset = st.selectbox('Dataset', os.listdir('Datasets'))
 df2 = pd.read_csv('Datasets/'+dataset)
 # Display Dataset name correctly 
 dataset_string = dataset.replace("_", " ")
-st.subheader(dataset_string.replace(".csv","").title() + " Dataset")
-# Display Chosen Dataset 
-st.dataframe(df2)
+show = st.checkbox('Show Dataset')
+if show:
+    st.subheader(dataset_string.replace(".csv","").title() + " Dataset")
+    # Display Chosen Dataset 
+    st.dataframe(df2)
 
-# Other Datasets 
+    # Other Datasets 
 
-# Governor County Candidate Dataset 
+    # Governor County Candidate Dataset 
 
-if dataset == "governors_county_candidate.csv": 
-    st.dataframe(data=df2.describe())
+    if dataset == "governors_county_candidate.csv": 
+        st.dataframe(data=df2.describe())
 
-# Governor County Dataset 
+    # Governor County Dataset 
 
-elif dataset == 'governors_county.csv':
-    perdf2 = df2[['percent']]
-    perdf2 = perdf2.loc[perdf2['percent'] == 100].count().iloc[0]
-    st.write(perdf2,' Counties have had 100 percent of votes counted')
-    st.dataframe(df2.describe())
-    f = sns.barplot(x='county',y='total_votes',data=df2.sort_values(by='total_votes', ascending=False).head(10))
-    f.set_xticklabels(f.get_xticklabels(), rotation=40, fontsize = 5, ha="right")
-    f.set_title('Top 10 Counties by Total Votes')
-    st.pyplot(f.figure) 
+    elif dataset == 'governors_county.csv':
+        perdf2 = df2[['percent']]
+        perdf2 = perdf2.loc[perdf2['percent'] == 100].count().iloc[0]
+        st.write(perdf2,' Counties have had 100 percent of votes counted')
+        st.dataframe(df2.describe())
+        f = sns.barplot(x='county',y='total_votes',data=df2.sort_values(by='total_votes', ascending=False).head(10))
+        f.set_xticklabels(f.get_xticklabels(), rotation=40, fontsize = 5, ha="right")
+        f.set_title('Top 10 Counties by Total Votes')
+        st.pyplot(f.figure) 
 
-# Governor State Dataset 
+    # Governor State Dataset 
 
-elif dataset == 'governors_state.csv': 
-    f = sns.barplot(x='state',y='votes',data=df2)
-    f.set_xticklabels(f.get_xticklabels(), rotation=40, fontsize = 5, ha="right")
-    f.set_title('Number of Senate Votes per State')
-    st.pyplot(f.figure)
-    st.write('Total Votes: ',df2.votes.sum())   
+    elif dataset == 'governors_state.csv': 
+        f = sns.barplot(x='state',y='votes',data=df2)
+        f.set_xticklabels(f.get_xticklabels(), rotation=40, fontsize = 5, ha="right")
+        f.set_title('Number of Senate Votes per State')
+        st.pyplot(f.figure)
+        st.write('Total Votes: ',df2.votes.sum())   
 
-# House Candidate Datset 
+    # House Candidate Datset 
 
-elif dataset == 'house_candidate.csv': 
-    st.subheader('Descriptive Statistics')
-    st.dataframe(df2.describe()) 
-    st.subheader('Total Votes per Party')
-    st.dataframe(df2.groupby('party').aggregate(np.sum))
-    f = df2.groupby('party').aggregate(np.sum).plot.bar()
-    f.set_title('Total Votes per Party')
-    st.pyplot(f.figure)
-# House State Dataset 
+    elif dataset == 'house_candidate.csv': 
+        st.subheader('Descriptive Statistics')
+        st.dataframe(df2.describe()) 
+        st.subheader('Total Votes per Party')
+        st.dataframe(df2.groupby('party').aggregate(np.sum))
+        f = df2.groupby('party').aggregate(np.sum).plot.bar()
+        f.set_title('Total Votes per Party')
+        st.pyplot(f.figure)
+    # House State Dataset 
 
-elif dataset == 'house_state.csv': 
-    st.subheader('Descriptive Statistics')
-    st.dataframe(df2.describe())
+    elif dataset == 'house_state.csv': 
+        st.subheader('Descriptive Statistics')
+        st.dataframe(df2.describe())
 
-# President County Dataset 
+    # President County Dataset 
 
-elif dataset == 'president_county_candidate.csv':
-    st.subheader('Descriptive Statistics')   
-    st.dataframe(df2.describe())
-    f = sns.barplot(x='county', y='total_votes', hue='candidate', data=df2.sort_values(by='total_votes',ascending=False).head(10))
-    f.set_xticklabels(f.get_xticklabels(), rotation=40, fontsize = 5, ha="right")
-    f.set_title('Top 10 Counties by Total Votes')
-    st.pyplot(f.figure)
+    elif dataset == 'president_county_candidate.csv':
+        st.subheader('Descriptive Statistics')   
+        st.dataframe(df2.describe())
+        f = sns.barplot(x='county', y='total_votes', hue='candidate', data=df2.sort_values(by='total_votes',ascending=False).head(10))
+        f.set_xticklabels(f.get_xticklabels(), rotation=40, fontsize = 5, ha="right")
+        f.set_title('Top 10 Counties by Total Votes')
+        st.pyplot(f.figure)
 
-# President County Dataset 
+    # President County Dataset 
 
-elif dataset == 'president_county.csv': 
-    st.subheader('Descriptive Statistics')
-    st.dataframe(df2.describe())
-    f = sns.barplot(x='county', y='total_votes', data=df2)
-    st.pyplot(f.figure)
+    elif dataset == 'president_county.csv': 
+        st.subheader('Descriptive Statistics')
+        st.dataframe(df2.describe())
+        f = sns.barplot(x='county', y='total_votes', data=df2)
+        st.pyplot(f.figure)
 
-# Senate State Dataset 
+    # Senate State Dataset 
 
-elif dataset == 'senate_state.csv': 
-    st.write('Total Votes: ',df2.total_votes.sum())
-    f = sns.barplot(x='state',y='total_votes',data=df2)
-    f.set_xticklabels(f.get_xticklabels(), rotation=40, fontsize = 5, ha="right")
-    f.set_title('Number of Senate Votes per State')
-    st.pyplot(f.figure)
-    
+    elif dataset == 'senate_state.csv': 
+        st.write('Total Votes: ',df2.total_votes.sum())
+        f = sns.barplot(x='state',y='total_votes',data=df2)
+        f.set_xticklabels(f.get_xticklabels(), rotation=40, fontsize = 5, ha="right")
+        f.set_title('Number of Senate Votes per State')
+        st.pyplot(f.figure)
+        
