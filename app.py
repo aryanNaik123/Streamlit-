@@ -99,9 +99,10 @@ if show:
     elif dataset == 'president_state.csv': 
         st.subheader('Descriptive Statistics')
         st.dataframe(df2.describe())
-        f = sms.barplot(x='state',y='total_votes',data=df2.sort_values(by='total_votes',ascending=False).head(10))
-        f.set_title('Top 10 States by Total Votes in the Presidential Election')
-
+        f = sns.barplot(x='state',y='total_votes',data=df2.sort_values(by='total_votes',ascending=False).head(10))
+        f.set_xticklabels(f.get_xticklabels(), rotation=40, fontsize = 8, ha="right")
+        f.set_title('Top 10 States by Total Votes in the Presidential Election',fontsize=8)
+        st.pyplot(f.figure)
     # Senate State Dataset 
 
     elif dataset == 'senate_state.csv': 
