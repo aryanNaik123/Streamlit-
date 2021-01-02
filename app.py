@@ -34,8 +34,6 @@ if show:
     # Display Chosen Dataset 
     st.dataframe(df2)
 
-    # Other Datasets 
-
     # Governor County Candidate Dataset 
 
     if dataset == "governors_county_candidate.csv": 
@@ -95,6 +93,14 @@ if show:
         st.dataframe(df2.describe())
         f = sns.barplot(x='county', y='total_votes', data=df2)
         st.pyplot(f.figure)
+
+    # President State Dataset 
+
+    elif dataset == 'president_state.csv': 
+        st.subheader('Descriptive Statistics')
+        st.dataframe(df2.describe())
+        f = sms.barplot(x='state',y='total_votes',data=df2.sort_values(by='total_votes',ascending=False).head(10))
+        f.set_title('Top 10 States by Total Votes in the Presidential Election')
 
     # Senate State Dataset 
 
