@@ -10,7 +10,7 @@ df = pd.read_csv('2020 November General Election - Turnout Rates.csv')
 # Setting Seaborn Graph Style 
 sns.set_style("whitegrid")
 # Title the page 
-st.title('2020 General Election Turnout')
+st.title('2020 Elections Data Analysis)
 st.subheader('Select State')
 # Select State to display in dataframe
 state = st.selectbox('state',options=df.State.unique())
